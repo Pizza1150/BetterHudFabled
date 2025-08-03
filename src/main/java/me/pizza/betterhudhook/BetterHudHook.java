@@ -19,10 +19,11 @@ public final class BetterHudHook extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("Fabled") != null) registerHook(new FabledHook());
         if (Bukkit.getPluginManager().getPlugin("FabledParties") != null) registerHook(new FabledPartiesHook());
 
-        hooks.forEach(Hook::register);
+        hooks.forEach(Hook::hook);
     }
 
     private void registerHook(Hook hook) {
         hooks.add(hook);
+        getLogger().info("Hooked onto " + hook.getPrefix());
     }
 }

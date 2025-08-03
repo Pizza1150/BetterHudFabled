@@ -12,5 +12,5 @@ public abstract class Hook {
         return prefix;
     }
 
-    public abstract void register();
+    public abstract void hook();
 }

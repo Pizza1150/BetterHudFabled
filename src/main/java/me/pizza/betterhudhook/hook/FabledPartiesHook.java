@@ -23,7 +23,7 @@ public class FabledPartiesHook extends Hook {
     }
 
     @Override
-    public void register() {
+    public void hook() {
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getBooleanContainer()

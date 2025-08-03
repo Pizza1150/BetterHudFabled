@@ -20,7 +20,7 @@ public class FabledHook extends Hook {
     }
 
     @Override
-    public void register() {
+    public void hook() {
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getNumberContainer()
