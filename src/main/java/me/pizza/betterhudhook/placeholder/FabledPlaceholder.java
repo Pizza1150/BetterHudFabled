@@ -54,7 +54,7 @@ public class FabledPlaceholder {
                         (Function<HudPlayer, Boolean>) hudPlayer -> {
                             Player player = Bukkit.getPlayerExact(hudPlayer.name());
                             Party party = FABLED_PARTIES.getParty(player);
-                            return party != null;
+                            return party != null && party.isMember(player);
                         })
                 );
 
