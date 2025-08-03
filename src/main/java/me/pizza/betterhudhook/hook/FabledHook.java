@@ -22,6 +22,19 @@ public class FabledHook extends Hook {
     @Override
     public void hook() {
         BetterHudAPI.inst()
+                .getListenerManager()
+                .addListener(prefix + "_mana", yaml -> updateEvent -> (hudPlayer) -> {
+                    Player player = Bukkit.getPlayerExact(hudPlayer.name());
+
+                    PlayerData data = Fabled.getData(player);
+                    if (data == null) return 0.0;
+
+                    double mana = data.getMana();
+                    double maxMana = data.getMaxMana();
+                    return mana / maxMana;
+                });
+
+        BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getNumberContainer()
                 .addPlaceholder(prefix + "_mana", HudPlaceholder.of((args, reason) ->
