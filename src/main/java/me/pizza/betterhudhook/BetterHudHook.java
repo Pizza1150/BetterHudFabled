@@ -1,5 +1,6 @@
 package me.pizza.betterhudhook;
 
+import me.pizza.betterhudhook.command.DebugCommand;
 import me.pizza.betterhudhook.hook.FabledHook;
 import me.pizza.betterhudhook.hook.FabledPartiesHook;
 import me.pizza.betterhudhook.hook.Hook;
@@ -20,6 +21,8 @@ public final class BetterHudHook extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("FabledParties") != null) registerHook(new FabledPartiesHook());
 
         hooks.forEach(Hook::hook);
+
+        getCommand("debug").setExecutor(new DebugCommand());
     }
 
     private void registerHook(Hook hook) {

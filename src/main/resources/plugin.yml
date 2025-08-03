@@ -3,3 +3,5 @@ version: '1.0-SNAPSHOT'
 main: me.pizza.betterhudhook.BetterHudHook
 api-version: '1.21'
 depend: [BetterHud]
+commands:
+  debug:
