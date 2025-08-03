@@ -21,6 +21,7 @@ public class FabledPlaceholder {
     private static final FabledParties FABLED_PARTIES = (FabledParties) Bukkit.getPluginManager().getPlugin("FabledParties");
 
     public FabledPlaceholder() {
+        // Fabled
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getNumberContainer()
@@ -64,6 +65,8 @@ public class FabledPlaceholder {
                         .requiredArgsLength(1)
                         .function((args, reason) -> (Function<HudPlayer, String>) hudPlayer -> {
                             Player player = Bukkit.getPlayerExact(hudPlayer.name());
+                            if (player == null) return "<none>";
+
                             int index = Integer.parseInt(args.getFirst());
 
                             Party party = FABLED_PARTIES.getParty(player);
@@ -76,7 +79,7 @@ public class FabledPlaceholder {
                             if (index < 0 || index >= membersExcludeMine.size()) return "<none>";
 
                             Player target = Bukkit.getPlayer(membersExcludeMine.get(index));
-                            return target != null ? target.getName() : "<offline>";
+                            return target != null ? target.getName() : "<none>";
                         })
                         .build()
                 );
