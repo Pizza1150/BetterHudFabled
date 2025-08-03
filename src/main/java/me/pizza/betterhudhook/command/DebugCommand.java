@@ -3,7 +3,6 @@ package me.pizza.betterhudhook.command;
 import kr.toxicity.hud.api.BetterHudAPI;
 import kr.toxicity.hud.api.placeholder.HudPlaceholder;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,7 +10,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
 public class DebugCommand implements CommandExecutor {
 

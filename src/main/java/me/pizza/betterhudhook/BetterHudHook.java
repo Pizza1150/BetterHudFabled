@@ -27,6 +27,6 @@ public final class BetterHudHook extends JavaPlugin {
 
     private void registerHook(Hook hook) {
         hooks.add(hook);
-        getLogger().info("Hooked onto " + hook.getPrefix());
+        getLogger().info("Hooked onto " + hook.getName());
     }
 }

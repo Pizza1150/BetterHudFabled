@@ -3,20 +3,19 @@ package me.pizza.betterhudhook.hook;
 import kr.toxicity.hud.api.BetterHudAPI;
 import kr.toxicity.hud.api.placeholder.HudPlaceholder;
 import kr.toxicity.hud.api.player.HudPlayer;
-
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
 import studio.magemonkey.fabled.Fabled;
 import studio.magemonkey.fabled.api.player.PlayerClass;
 import studio.magemonkey.fabled.api.player.PlayerData;
 
 import java.util.function.Function;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 public class FabledHook extends Hook {
 
     public FabledHook() {
-        super("fabled");
+        super("Fabled", "fabled");
     }
 
     @Override

@@ -18,7 +18,7 @@ public class FabledPartiesHook extends Hook {
     private final FabledParties fabledParties;
 
     public FabledPartiesHook() {
-        super("fabled");
+        super("FabledParties","fabled");
         fabledParties = (FabledParties) Bukkit.getPluginManager().getPlugin("FabledParties");
     }
 
@@ -38,7 +38,7 @@ public class FabledPartiesHook extends Hook {
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getStringContainer()
-                .addPlaceholder(prefix + "_fabled_party_member_exclude_mine", HudPlaceholder.<String>builder()
+                .addPlaceholder(prefix + "_party_member_exclude_mine", HudPlaceholder.<String>builder()
                         .requiredArgsLength(1)
                         .function((args, reason) -> (Function<HudPlayer, String>) hudPlayer -> {
                             Player player = Bukkit.getPlayerExact(hudPlayer.name());
