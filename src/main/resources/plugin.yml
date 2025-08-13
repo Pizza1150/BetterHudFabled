@@ -1,7 +1,6 @@
-name: BetterHudHook
-version: '1.0-SNAPSHOT'
-main: me.pizza.betterhudhook.BetterHudHook
+name: BetterHudFabled
+version: '1.0'
+main: me.pizza.betterhudfabled.BetterHudFabled
 api-version: '1.21'
-depend: [BetterHud]
-commands:
-  debug:
+author: Pizza
+depend: [BetterHud, Fabled, FabledParties]

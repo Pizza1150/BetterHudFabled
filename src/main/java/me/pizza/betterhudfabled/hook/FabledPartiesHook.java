@@ -1,47 +1,44 @@
-package me.pizza.betterhudhook.hook;
+package me.pizza.betterhudfabled.hook;
 
 import kr.toxicity.hud.api.BetterHudAPI;
 import kr.toxicity.hud.api.placeholder.HudPlaceholder;
-import kr.toxicity.hud.api.player.HudPlayer;
 import studio.magemonkey.fabled.parties.FabledParties;
 import studio.magemonkey.fabled.parties.Party;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Function;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class FabledPartiesHook extends Hook {
+public class FabledPartiesHook implements Hook {
 
     private final FabledParties fabledParties;
 
     public FabledPartiesHook() {
-        super("FabledParties","fabled");
         fabledParties = (FabledParties) Bukkit.getPluginManager().getPlugin("FabledParties");
     }
 
     @Override
-    public void hook() {
+    public void load() {
+        // Placeholders
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getBooleanContainer()
-                .addPlaceholder(prefix + "_is_in_party", HudPlaceholder.of((args, reason) ->
-                        (Function<HudPlayer, Boolean>) hudPlayer -> {
-                            Player player = Bukkit.getPlayerExact(hudPlayer.name());
-                            Party party = fabledParties.getParty(player);
-                            return party != null && party.isMember(player);
-                        })
+                .addPlaceholder("fabled_is_in_party", HudPlaceholder.of((args, reason) -> hudPlayer -> {
+                        Player player = Bukkit.getPlayer(hudPlayer.uuid());
+                        Party party = fabledParties.getParty(player);
+                        return party != null && party.isMember(player);
+                    })
                 );
 
         BetterHudAPI.inst()
                 .getPlaceholderManager()
                 .getStringContainer()
-                .addPlaceholder(prefix + "_party_member_exclude_mine", HudPlaceholder.<String>builder()
+                .addPlaceholder("fabled_party_member_exclude_mine", HudPlaceholder.<String>builder()
                         .requiredArgsLength(1)
-                        .function((args, reason) -> (Function<HudPlayer, String>) hudPlayer -> {
-                            Player player = Bukkit.getPlayerExact(hudPlayer.name());
+                        .function((args, reason) -> hudPlayer -> {
+                            Player player = Bukkit.getPlayer(hudPlayer.uuid());
                             if (player == null) return "<none>";
 
                             int index = Integer.parseInt(args.getFirst());
@@ -58,7 +55,7 @@ public class FabledPartiesHook extends Hook {
                             Player target = Bukkit.getPlayer(membersExcludeMine.get(index));
                             return target != null ? target.getName() : "<none>";
                         })
-                        .build()
+                .build()
                 );
     }
 }
